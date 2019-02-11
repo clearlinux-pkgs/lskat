@@ -5,23 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : lskat
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/lskat-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/lskat-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/lskat-18.08.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/lskat-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/lskat-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/lskat-18.12.2.tar.xz.sig
+Summary  : Lieutenant Skat is a fun and engaging card game for two players
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 LGPL-2.0
-Requires: lskat-bin
-Requires: lskat-data
-Requires: lskat-license
-Requires: lskat-locales
+Requires: lskat-bin = %{version}-%{release}
+Requires: lskat-data = %{version}-%{release}
+Requires: lskat-license = %{version}-%{release}
+Requires: lskat-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
-BuildRequires : phonon-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 GENERAL NOTE:
@@ -30,8 +29,8 @@ https://games.kde.org/
 %package bin
 Summary: bin components for the lskat package.
 Group: Binaries
-Requires: lskat-data
-Requires: lskat-license
+Requires: lskat-data = %{version}-%{release}
+Requires: lskat-license = %{version}-%{release}
 
 %description bin
 bin components for the lskat package.
@@ -70,27 +69,27 @@ locales components for the lskat package.
 
 
 %prep
-%setup -q -n lskat-18.08.0
+%setup -q -n lskat-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535434478
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549907766
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535434478
+export SOURCE_DATE_EPOCH=1549907766
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/lskat
-cp COPYING %{buildroot}/usr/share/doc/lskat/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/lskat/COPYING.DOC
-cp COPYING.LIB %{buildroot}/usr/share/doc/lskat/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/lskat
+cp COPYING %{buildroot}/usr/share/package-licenses/lskat/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/lskat/COPYING.DOC
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/lskat/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -157,10 +156,10 @@ popd
 /usr/share/doc/HTML/uk/lskat/index.docbook
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/lskat/COPYING
-/usr/share/doc/lskat/COPYING.DOC
-/usr/share/doc/lskat/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/lskat/COPYING
+/usr/share/package-licenses/lskat/COPYING.DOC
+/usr/share/package-licenses/lskat/COPYING.LIB
 
 %files locales -f lskat.lang
 %defattr(-,root,root,-)
