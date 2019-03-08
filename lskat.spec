@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : lskat
-Version  : 18.12.2
-Release  : 3
-URL      : https://download.kde.org/stable/applications/18.12.2/src/lskat-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/lskat-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/lskat-18.12.2.tar.xz.sig
-Summary  : Lieutenant Skat is a fun and engaging card game for two players
+Version  : 18.12.3
+Release  : 4
+URL      : https://download.kde.org/stable/applications/18.12.3/src/lskat-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/lskat-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/lskat-18.12.3.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 LGPL-2.0
 Requires: lskat-bin = %{version}-%{release}
@@ -69,22 +69,23 @@ locales components for the lskat package.
 
 
 %prep
-%setup -q -n lskat-18.12.2
+%setup -q -n lskat-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549907766
+export SOURCE_DATE_EPOCH=1552011979
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549907766
+export SOURCE_DATE_EPOCH=1552011979
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lskat
 cp COPYING %{buildroot}/usr/share/package-licenses/lskat/COPYING
