@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : lskat
-Version  : 19.04.0
-Release  : 7
-URL      : https://download.kde.org/stable/applications/19.04.0/src/lskat-19.04.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.0/src/lskat-19.04.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.0/src/lskat-19.04.0.tar.xz.sig
+Version  : 19.04.1
+Release  : 8
+URL      : https://download.kde.org/stable/applications/19.04.1/src/lskat-19.04.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.1/src/lskat-19.04.1.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.1/src/lskat-19.04.1.tar.xz.sig
 Summary  : Lieutenant Skat is a fun and engaging card game for two players
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 LGPL-2.0
@@ -20,7 +20,6 @@ Requires: lskat-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
-BuildRequires : phonon-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -70,14 +69,14 @@ locales components for the lskat package.
 
 
 %prep
-%setup -q -n lskat-19.04.0
+%setup -q -n lskat-19.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557041119
+export SOURCE_DATE_EPOCH=1557460218
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -92,7 +91,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557041119
+export SOURCE_DATE_EPOCH=1557460218
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lskat
 cp COPYING %{buildroot}/usr/share/package-licenses/lskat/COPYING
