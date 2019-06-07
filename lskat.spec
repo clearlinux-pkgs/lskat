@@ -6,7 +6,7 @@
 #
 Name     : lskat
 Version  : 19.04.2
-Release  : 9
+Release  : 10
 URL      : https://download.kde.org/stable/applications/19.04.2/src/lskat-19.04.2.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.04.2/src/lskat-19.04.2.tar.xz
 Source99 : https://download.kde.org/stable/applications/19.04.2/src/lskat-19.04.2.tar.xz.sig
@@ -20,6 +20,7 @@ Requires: lskat-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
+BuildRequires : phonon-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -76,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559909719
+export SOURCE_DATE_EPOCH=1559909895
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -91,7 +92,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1559909719
+export SOURCE_DATE_EPOCH=1559909895
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lskat
 cp COPYING %{buildroot}/usr/share/package-licenses/lskat/COPYING
