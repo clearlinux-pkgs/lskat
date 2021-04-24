@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : lskat
-Version  : 20.12.3
-Release  : 29
-URL      : https://download.kde.org/stable/release-service/20.12.3/src/lskat-20.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.12.3/src/lskat-20.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.12.3/src/lskat-20.12.3.tar.xz.sig
+Version  : 21.04.0
+Release  : 30
+URL      : https://download.kde.org/stable/release-service/21.04.0/src/lskat-21.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.0/src/lskat-21.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.0/src/lskat-21.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GFDL-1.2 GPL-2.0 LGPL-2.0
+License  : GFDL-1.2 LGPL-2.0
 Requires: lskat-bin = %{version}-%{release}
 Requires: lskat-data = %{version}-%{release}
 Requires: lskat-license = %{version}-%{release}
@@ -70,15 +70,15 @@ locales components for the lskat package.
 
 
 %prep
-%setup -q -n lskat-20.12.3
-cd %{_builddir}/lskat-20.12.3
+%setup -q -n lskat-21.04.0
+cd %{_builddir}/lskat-21.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618696986
+export SOURCE_DATE_EPOCH=1619226734
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,12 +94,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618696986
+export SOURCE_DATE_EPOCH=1619226734
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lskat
-cp %{_builddir}/lskat-20.12.3/COPYING %{buildroot}/usr/share/package-licenses/lskat/fafaf6b2753f82aa8df1d206d6b76c2241c2dfa8
-cp %{_builddir}/lskat-20.12.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/lskat/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/lskat-20.12.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/lskat/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/lskat-21.04.0/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/lskat/7697008f58568e61e7598e796eafc2a997503fde
+cp %{_builddir}/lskat-21.04.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/lskat/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/lskat-21.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/lskat/a4c60b3fefda228cd7439d3565df043192fef137
 pushd clr-build
 %make_install
 popd
@@ -121,7 +121,6 @@ popd
 /usr/share/icons/hicolor/32x32/apps/lskat.png
 /usr/share/icons/hicolor/48x48/apps/lskat.png
 /usr/share/icons/hicolor/64x64/apps/lskat.png
-/usr/share/kxmlgui5/lskat/lskatui.rc
 /usr/share/lskat/grafix/blue.desktop
 /usr/share/lskat/grafix/blue.rc
 /usr/share/lskat/grafix/blue.svg
@@ -167,9 +166,8 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/lskat/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-/usr/share/package-licenses/lskat/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-/usr/share/package-licenses/lskat/fafaf6b2753f82aa8df1d206d6b76c2241c2dfa8
+/usr/share/package-licenses/lskat/7697008f58568e61e7598e796eafc2a997503fde
+/usr/share/package-licenses/lskat/a4c60b3fefda228cd7439d3565df043192fef137
 
 %files locales -f lskat.lang
 %defattr(-,root,root,-)
