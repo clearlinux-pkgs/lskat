@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : lskat
-Version  : 21.08.1
-Release  : 32
-URL      : https://download.kde.org/stable/release-service/21.08.1/src/lskat-21.08.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.08.1/src/lskat-21.08.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.08.1/src/lskat-21.08.1.tar.xz.sig
+Version  : 21.08.2
+Release  : 33
+URL      : https://download.kde.org/stable/release-service/21.08.2/src/lskat-21.08.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.2/src/lskat-21.08.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.2/src/lskat-21.08.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 LGPL-2.0
@@ -70,15 +70,15 @@ locales components for the lskat package.
 
 
 %prep
-%setup -q -n lskat-21.08.1
-cd %{_builddir}/lskat-21.08.1
+%setup -q -n lskat-21.08.2
+cd %{_builddir}/lskat-21.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1630958015
+export SOURCE_DATE_EPOCH=1634324590
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,12 +94,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1630958015
+export SOURCE_DATE_EPOCH=1634324590
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lskat
-cp %{_builddir}/lskat-21.08.1/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/lskat/7697008f58568e61e7598e796eafc2a997503fde
-cp %{_builddir}/lskat-21.08.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/lskat/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/lskat-21.08.1/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/lskat/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/lskat-21.08.2/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/lskat/7697008f58568e61e7598e796eafc2a997503fde
+cp %{_builddir}/lskat-21.08.2/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/lskat/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/lskat-21.08.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/lskat/a4c60b3fefda228cd7439d3565df043192fef137
 pushd clr-build
 %make_install
 popd
